@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://192.168.99.100:8080/api/v1/accounts/test/queues/test_queue/messages?popReceipt=MDoyOm1qdWpvdw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Key xfXq7tTmZoz2phCicnhFCj4tPExxxDUTIIzOLcGRlkKkFP56DxF68aiabpqae8Ff9_D0GZdF4QqCh4PdqahDOA
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Date:
+      - Wed, 17 Feb 2016 02:18:14 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '116'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "reason" : "Conflict",
+          "operation" : "AckMessage",
+          "message" : "The message is already being reprocessed."
+        }
+    http_version: 
+  recorded_at: Wed, 17 Feb 2016 02:18:14 GMT
+recorded_with: VCR 3.0.1

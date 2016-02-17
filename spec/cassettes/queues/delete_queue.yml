@@ -1,0 +1,32 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://192.168.99.100:8080/api/v1/accounts/test/queues/what
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Key xfXq7tTmZoz2phCicnhFCj4tPExxxDUTIIzOLcGRlkKkFP56DxF68aiabpqae8Ff9_D0GZdF4QqCh4PdqahDOA
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 17 Feb 2016 01:15:49 GMT
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 17 Feb 2016 01:15:49 GMT
+recorded_with: VCR 3.0.1

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: http://192.168.99.100:8080/api/v1/accounts/test/queues/test_queue/messages?popReceipt=MDoyOm1qdWpvdw
+    uri: http://192.168.99.100:8080/api/v1/accounts/test/queues/test_queue/messages?popReceipt=NDo0OmJGZzlYZw
     body:
       encoding: US-ASCII
       string: ''
@@ -17,23 +17,14 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 204
+      message: No Content
     headers:
       Date:
-      - Wed, 17 Feb 2016 02:18:14 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '116'
+      - Thu, 18 Feb 2016 21:36:43 GMT
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "reason" : "Conflict",
-          "operation" : "AckMessage",
-          "message" : "The message is already being reprocessed."
-        }
+      string: ''
     http_version: 
-  recorded_at: Wed, 17 Feb 2016 02:18:14 GMT
+  recorded_at: Thu, 18 Feb 2016 21:36:43 GMT
 recorded_with: VCR 3.0.1

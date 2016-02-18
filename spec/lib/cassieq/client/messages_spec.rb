@@ -36,10 +36,9 @@ RSpec.describe Cassieq::Client::Messages do
 
   describe "#delete_message", vcr: { cassette_name: "messages/delete_message" } do
     it "returns success" do
-      pop_receipt = "MDoyOm1qdWpvdw"
-      response = client.delete_message("test_queue", pop_receipt) do
-        expect(response.status).to eq(200)
-      end
+      pop_receipt = "NDo0OmJGZzlYZw"
+      response = client.delete_message("test_queue", pop_receipt)
+      expect(response.status).to eq(204)
     end
   end
 end

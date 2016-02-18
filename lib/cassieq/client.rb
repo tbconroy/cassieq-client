@@ -1,4 +1,5 @@
 require "faraday"
+require "faraday_middleware"
 require "cassieq/client/queues"
 require "cassieq/client/messages"
 require "cassieq/client/statistics"
@@ -25,23 +26,18 @@ module Cassieq
     end
 
     def connection
-      Faraday.new do |faraday|
-        faraday.request(:url_encoded)
-        # faraday.response(:logger)
-        faraday.adapter(Faraday.default_adapter)
-      end.tap { |conn| configure_connection(conn) }
-    end
-
-    private
-
-    def configure_connection(conn)
-      conn.host = host
-      conn.port = port
-      conn.path_prefix = path_prefix
-      conn.headers["Authorization"] = "Key #{key}" unless key.nil?
-      unless auth.nil? || sig.nil?
-        conn.params["auth"] = auth
-        conn.params["sig"] = sig
+      Faraday.new do |conn|
+        conn.request(:url_encoded)
+        conn.adapter(Faraday.default_adapter)
+        conn.host = host
+        conn.port = port
+        conn.path_prefix = path_prefix
+        conn.headers["Authorization"] = "Key #{key}" unless key.nil?
+        unless auth.nil? || sig.nil?
+          conn.params["auth"] = auth
+          conn.params["sig"] = sig
+        end
+        conn.response :json, :content_type => /\bjson$/
       end
     end
   end

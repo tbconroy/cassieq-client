@@ -6,7 +6,7 @@ RSpec.describe Cassieq::Client::Messages do
   describe "#next_message", vcr: { cassette_name: "messages/next_message" } do
     it "returns message" do
       response = client.next_message("test_queue")
-      expect(JSON.parse(response.body)).to eq({
+      expect(response.body).to eq({
         "popReceipt" => "NDoyOmJGZzlYZw",
         "message" => "Don't fake the funk on a nasty dunk",
         "deliveryCount" => 0,
@@ -27,7 +27,7 @@ RSpec.describe Cassieq::Client::Messages do
       pop_receipt = "NDoyOmJGZzlYZw"
       response = client.edit_message("test_queue", pop_receipt, message: "Tacos tonight!")
       expect(response.status).to eq(200)
-      expect(JSON.parse(response.body)).to eq({
+      expect(response.body).to eq({
         "popReceipt" => "NDozOmJGZzlYZw",
         "messageTag" => "bFg9Xg"
       })

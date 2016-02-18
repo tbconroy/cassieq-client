@@ -6,7 +6,7 @@ RSpec.describe Cassieq::Client::Queues do
   describe "#queues", vcr: { cassette_name: "queues/queues" } do
     it "returns information about all queues" do
       response = client.queues
-      expect(JSON.parse(response.body)).to include({
+      expect(response.body).to include({
         "accountName"=>"test",
         "queueName"=>"what",
         "bucketSize"=>20,
@@ -33,7 +33,7 @@ RSpec.describe Cassieq::Client::Queues do
   describe "#queue", vcr: { cassette_name: "queues/queue" } do
     it "returns information about the queue" do
       response = client.queue("what")
-      expect(JSON.parse(response.body)).to eq({
+      expect(response.body).to eq({
         "accountName"=>"test",
         "queueName"=>"what",
         "bucketSize"=>20,

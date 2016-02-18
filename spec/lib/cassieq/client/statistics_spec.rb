@@ -6,7 +6,7 @@ RSpec.describe Cassieq::Client::Queues do
   describe "#statistics", vcr: { cassette_name: "statistics/statistics" } do
     it "returns statistical information" do
       response = client.statistics("test_queue")
-      expect(JSON.parse(response.body)).to include({ "size" => 2 })
+      expect(response.body).to include({ "size" => 2 })
     end
   end
 end

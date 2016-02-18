@@ -21,6 +21,8 @@ module Cassieq
       @port = params.fetch(:port, 8080)
     end
 
+    private
+
     def path_prefix
       "/api/v1/accounts/#{account}"
     end
@@ -40,8 +42,6 @@ module Cassieq
         conn.response :json, :content_type => /\bjson$/
       end
     end
-
-    private
 
     def get(path)
       connection.run_request(:get, path, nil, nil)

@@ -40,5 +40,27 @@ module Cassieq
         conn.response :json, :content_type => /\bjson$/
       end
     end
+
+    private
+
+    def get(path)
+      connection.run_request(:get, path, nil, nil)
+    end
+
+    def post(path, body)
+      connection.run_request(:post, path, body, nil)
+    end
+
+    def put(path, body, params = {})
+      connection.run_request(:put, path, body, nil) do |req|
+        req.params.merge!(params)
+      end
+    end
+
+    def delete(path, params = {})
+      connection.run_request(:delete, path, nil, nil) do |req|
+        req.params.merge!(params)
+      end
+    end
   end
 end

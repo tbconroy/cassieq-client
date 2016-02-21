@@ -75,7 +75,7 @@ module Cassieq
 
     def handle_response(&request_block)
       response = request_block.call
-      Cassieq::Error.check_response(response)
+      Cassieq::Error.from_status_and_body(response)
       unless response.body.nil? || response.body.empty?
         Cassieq::Utils.transform_keys(response.body)
       else

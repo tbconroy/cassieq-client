@@ -1,7 +1,7 @@
 module Cassieq
   class Error < StandardError
 
-    def self.check_response(response)
+    def self.from_status_and_body(response)
       error = case response.status.to_i
         when 401
           Cassieq::Unauthorized
@@ -14,7 +14,7 @@ module Cassieq
         when 500..599
           Cassieq::ServerError
         end
-      raise error, response.body if error
+      raise error, response.body["message"] || response.body if error
     end
   end
 

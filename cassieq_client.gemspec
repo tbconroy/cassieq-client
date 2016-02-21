@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.description = "A simple wrapper for the CassieQ api"
   s.authors = ["Tom Conroy"]
   s.email = "tbconroy@gmail.com"
+  s.homepage = "https://github.com/tronroy/cassieq_client"
   s.files += Dir.glob("lib/**/*.rb")
   s.add_dependency "faraday", "~> 0.9"
   s.add_dependency "faraday_middleware", "~>0.10"

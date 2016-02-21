@@ -1,8 +1,10 @@
 require "faraday"
 require "faraday_middleware"
-require "cassieq/client/queues"
 require "cassieq/client/messages"
 require "cassieq/client/statistics"
+require "cassieq/client/queues"
+require "cassieq/error"
+require "cassieq/utils"
 
 module Cassieq
   class Client
@@ -44,22 +46,40 @@ module Cassieq
     end
 
     def get(path)
-      connection.run_request(:get, path, nil, nil)
+      handle_response do
+        connection.run_request(:get, path, nil, nil)
+      end
     end
 
     def post(path, body)
-      connection.run_request(:post, path, body, nil)
+      handle_response do
+        connection.run_request(:post, path, body, nil)
+      end
     end
 
     def put(path, body, params = {})
-      connection.run_request(:put, path, body, nil) do |req|
-        req.params.merge!(params)
+      handle_response do
+        connection.run_request(:put, path, body, nil) do |req|
+          req.params.merge!(params)
+        end
       end
     end
 
     def delete(path, params = {})
-      connection.run_request(:delete, path, nil, nil) do |req|
-        req.params.merge!(params)
+      handle_response do
+        connection.run_request(:delete, path, nil, nil) do |req|
+          req.params.merge!(params)
+        end
+      end
+    end
+
+    def handle_response(&request_block)
+      response = request_block.call
+      Cassieq::Error.check_response(response)
+      unless response.body.nil? || response.body.empty?
+        Cassieq::Utils.transform_keys(response.body)
+      else
+        true
       end
     end
   end

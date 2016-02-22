@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: http://192.168.99.100:8080/api/v1/accounts/test/queues/what
+    uri: http://<HOST>:8080/api/v1/accounts/test/queues/what
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
-      - Key xfXq7tTmZoz2phCicnhFCj4tPExxxDUTIIzOLcGRlkKkFP56DxF68aiabpqae8Ff9_D0GZdF4QqCh4PdqahDOA
+      - Key <KEY>
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:

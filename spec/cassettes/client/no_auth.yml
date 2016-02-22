@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://192.168.99.100:8080/api/v1/accounts/test/queues
+    uri: http://<HOST>:8080/api/v1/accounts/test/queues
     body:
       encoding: US-ASCII
       string: ''

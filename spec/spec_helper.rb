@@ -22,10 +22,15 @@ require "vcr"
 require "webmock"
 require "byebug"
 
+CONFIG = YAML.load_file("#{Dir.pwd}/spec/config.yml")
+
 VCR.configure do |config|
   config.cassette_library_dir = "spec/cassettes"
   config.hook_into(:webmock)
   config.configure_rspec_metadata!
+  config.filter_sensitive_data("<HOST>") { CONFIG["host"] }
+  config.filter_sensitive_data("<KEY>") { CONFIG["key"] }
+  config.filter_sensitive_data("<SIG>") { CONFIG["sig"] }
 end
 
 RSpec.configure do |config|

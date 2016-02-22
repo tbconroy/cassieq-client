@@ -53,7 +53,9 @@ module Cassieq
 
     def post(path, body)
       handle_response do
-        connection.run_request(:post, path, body, nil)
+        connection.run_request(:post, path, body, nil) do |req|
+          req.headers.merge!("Content-Type" => "application/json")
+        end
       end
     end
 
@@ -61,6 +63,7 @@ module Cassieq
       handle_response do
         connection.run_request(:put, path, body, nil) do |req|
           req.params.merge!(params)
+          req.headers.merge!("Content-Type" => "application/json")
         end
       end
     end

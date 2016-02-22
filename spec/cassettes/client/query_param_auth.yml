@@ -19,30 +19,14 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 18 Feb 2016 22:28:21 GMT
+      - Mon, 22 Feb 2016 20:57:20 GMT
       Content-Type:
       - application/json
-      Vary:
-      - Accept-Encoding
       Content-Length:
-      - '263'
+      - '3'
     body:
-      encoding: ASCII-8BIT
-      string: |-
-        [ {
-          "accountName" : "test",
-          "queueName" : "test_queue",
-          "bucketSize" : 20,
-          "maxDeliveryCount" : 5,
-          "status" : "Active",
-          "version" : 0,
-          "repairWorkerPollFrequencySeconds" : 5,
-          "repairWorkerTombstonedBucketTimeoutSeconds" : 15,
-          "deleteBucketsAfterFinalization" : true,
-          "queueStatsId" : "5a4188f1-9b59-4950-b162-c68fde2df619_test:test_queue_v0",
-          "dlqName" : null,
-          "id" : "test:test_queue_v0"
-        } ]
+      encoding: UTF-8
+      string: "[ ]"
     http_version: 
-  recorded_at: Thu, 18 Feb 2016 22:28:21 GMT
+  recorded_at: Mon, 22 Feb 2016 20:57:20 GMT
 recorded_with: VCR 3.0.1

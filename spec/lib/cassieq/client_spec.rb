@@ -10,7 +10,7 @@ RSpec.describe Cassieq::Client do
 
     it "suceeds" do
       response = client.queues
-      expect(response).to be_a(Array)
+      expect(response).to eq(true)
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.describe Cassieq::Client do
 
     it "succeeds" do
       response = client.queues
-      expect(response).to be_a(Array)
+      expect(response).to eq(true)
     end
   end
   
@@ -28,7 +28,7 @@ RSpec.describe Cassieq::Client do
     let(:params) { base_params }
 
     it "raises unauthorized error" do
-      expect{ client.queues }.to raise_error(Cassieq::Unauthorized)
+      expect{ client.queues }.to raise_error(Cassieq::Unauthorized, "HTTP 401 Unauthorized")
     end
   end
 end

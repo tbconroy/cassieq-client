@@ -1,6 +1,37 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: http://<HOST>:8080/api/v1/accounts/test/queues
+    body:
+      encoding: UTF-8
+      string: '{"queueName":"test_queue"}'
+    headers:
+      Authorization:
+      - Key <KEY>
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Mon, 22 Feb 2016 20:37:06 GMT
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 22 Feb 2016 20:37:06 GMT
+- request:
     method: get
     uri: http://<HOST>:8080/api/v1/accounts/test/queues
     body:
@@ -21,19 +52,19 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 17 Feb 2016 00:55:56 GMT
+      - Mon, 22 Feb 2016 20:37:06 GMT
       Content-Type:
       - application/json
       Vary:
       - Accept-Encoding
       Content-Length:
-      - '401'
+      - '262'
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
           "accountName" : "test",
-          "queueName" : "coolQueue",
+          "queueName" : "test_queue",
           "bucketSize" : 20,
           "maxDeliveryCount" : 5,
           "status" : "Active",
@@ -41,49 +72,39 @@ http_interactions:
           "repairWorkerPollFrequencySeconds" : 5,
           "repairWorkerTombstonedBucketTimeoutSeconds" : 15,
           "deleteBucketsAfterFinalization" : true,
-          "queueStatsId" : "89c4d86b-3b35-46f9-ae15-c2b595cfdf3f_test:coolQueue_v0",
+          "queueStatsId" : "14a20d16-664c-4ae2-9e03-6178e3e11d5a_test:test_queue_v0",
           "dlqName" : null,
-          "id" : "test:coolQueue_v0"
-        }, {
-          "accountName" : "test",
-          "queueName" : "dead",
-          "bucketSize" : 20,
-          "maxDeliveryCount" : 5,
-          "status" : "Active",
-          "version" : 0,
-          "repairWorkerPollFrequencySeconds" : 5,
-          "repairWorkerTombstonedBucketTimeoutSeconds" : 15,
-          "deleteBucketsAfterFinalization" : true,
-          "queueStatsId" : "5f078c78-f1a1-4b4f-8278-7454a5c0026f_test:dead_v0",
-          "dlqName" : null,
-          "id" : "test:dead_v0"
-        }, {
-          "accountName" : "test",
-          "queueName" : "killer",
-          "bucketSize" : 20,
-          "maxDeliveryCount" : 5,
-          "status" : "Active",
-          "version" : 0,
-          "repairWorkerPollFrequencySeconds" : 5,
-          "repairWorkerTombstonedBucketTimeoutSeconds" : 15,
-          "deleteBucketsAfterFinalization" : true,
-          "queueStatsId" : "6b7bff40-11f6-435d-96bb-5636cb3efc19_test:killer_v0",
-          "dlqName" : null,
-          "id" : "test:killer_v0"
-        }, {
-          "accountName" : "test",
-          "queueName" : "what",
-          "bucketSize" : 20,
-          "maxDeliveryCount" : 5,
-          "status" : "Active",
-          "version" : 0,
-          "repairWorkerPollFrequencySeconds" : 5,
-          "repairWorkerTombstonedBucketTimeoutSeconds" : 15,
-          "deleteBucketsAfterFinalization" : true,
-          "queueStatsId" : "b5df2e33-7419-403d-a0ec-f6b7e942f81c_test:what_v0",
-          "dlqName" : null,
-          "id" : "test:what_v0"
+          "id" : "test:test_queue_v0"
         } ]
     http_version: 
-  recorded_at: Wed, 17 Feb 2016 00:55:56 GMT
+  recorded_at: Mon, 22 Feb 2016 20:37:06 GMT
+- request:
+    method: delete
+    uri: http://<HOST>:8080/api/v1/accounts/test/queues/test_queue
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Key <KEY>
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 22 Feb 2016 20:37:06 GMT
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 22 Feb 2016 20:37:06 GMT
 recorded_with: VCR 3.0.1

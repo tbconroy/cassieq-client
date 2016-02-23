@@ -20,7 +20,6 @@
 require "cassieq/client"
 require "vcr"
 require "webmock"
-require "byebug"
 
 CONFIG = YAML.load_file("#{Dir.pwd}/spec/config.yml")
 

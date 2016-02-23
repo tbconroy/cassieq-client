@@ -1,8 +1,9 @@
 #You must provide the following variables for your dev CassieQ container when recording new cassettes for tests
 #host: the host for the dev CassieQ container
-#key: must be an auth key generated for account name "test"
-#sig: must be sig query param generated for account name "test" and levels ["r", "p", "u", "a", "g", "c", "d"]
+#key: must be an auth key generated for account
+#sig: must be sig query param generated for account and at least level ["g"]
 
-host: host-here.com
-key: authKeyHere
-sig: sigQueryParamHere
+host: my-cassieq-container-host.com
+account: test-account
+key: my-generated-auth-key
+sig: my-generated-sig-param

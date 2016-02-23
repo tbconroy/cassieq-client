@@ -29,6 +29,7 @@ VCR.configure do |config|
   config.hook_into(:webmock)
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<HOST>") { CONFIG["host"] }
+  config.filter_sensitive_data("<ACCOUNT>") { CONFIG["account"] }
   config.filter_sensitive_data("<KEY>") { CONFIG["key"] }
   config.filter_sensitive_data("<SIG>") { CONFIG["sig"] }
 end

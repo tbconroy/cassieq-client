@@ -1,29 +1,26 @@
+require "active_support/core_ext/hash/keys"
+require "active_support/inflector"
+
 module Cassieq
-  class Utils
+  module Utils
+    def underscore_and_symobolize_keys(data)
+      transform_keys_in_structure(data) { |key| key.underscore.to_sym }
+    end
 
-    class << self
+    def camelize_and_stringify_keys(data)
+      transform_keys_in_structure(data) { |key| key.to_s.camelize(:lower) }
+    end
 
-      def transform_keys(data)
-        case data
-        when Hash
-          underscore_and_symbolize_keys(data)
-        when Array
-          data.map! { |hash| underscore_and_symbolize_keys(hash) }
+    private
+
+    def transform_keys_in_structure(data)
+      case data
+      when Hash
+        data.transform_keys { |key| yield(key) }
+      when Array
+        data.map do |hash|
+          hash.transform_keys { |key| yield(key) }
         end
-      end
-
-      private
-
-      def underscore_and_symbolize_keys(hash)
-        Hash[hash.map{ |key, value| [underscore(key).to_sym, value] }]
-      end
-
-      def underscore(string)
-        string.gsub(/::/, '/').
-        gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-        gsub(/([a-z\d])([A-Z])/,'\1_\2').
-        tr("-", "_").
-        downcase
       end
     end
   end

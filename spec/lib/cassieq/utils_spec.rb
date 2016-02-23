@@ -1,17 +1,36 @@
 require "spec_helper"
+include Cassieq::Utils
 
 RSpec.describe Cassieq::Utils do
-  describe ".transform_keys" do
-    it "symbolizes and underscores hash keys" do
-      data = { "joeCamelCase" => "what", "ninjaTurtles" => "cowabunga" }
-      transformed = Cassieq::Utils.transform_keys(data)
-      expect(transformed).to eq({ joe_camel_case: "what", ninja_turtles: "cowabunga" })
+  describe "#underscore_and_symobolize_keys" do
+    context "structure is a single hash" do
+      it "transforms the keys" do
+        data = { "joeCamelCase" => "what", "ninjaTurtles" => "cowabunga" }
+        expect(underscore_and_symobolize_keys(data)).to eq(joe_camel_case: "what", ninja_turtles: "cowabunga")
+      end
     end
 
-    it "symbolizes and undercores hash keys in an array" do
-      data = [{ "joeCamelCase" => "what"} , {"ninjaTurtles" => "cowabunga" }]
-      transformed = Cassieq::Utils.transform_keys(data)
-      expect(transformed).to eq([{ joe_camel_case: "what"} , { ninja_turtles: "cowabunga" }])
+    context "structure is hashes nested in an array" do
+      it "transforms the keys" do
+        data = [{ "joeCamelCase" => "what" }, { "ninjaTurtles" => "cowabunga" }]
+        expect(underscore_and_symobolize_keys(data)).to eq([{ joe_camel_case: "what" }, { ninja_turtles: "cowabunga" }])
+      end
+    end
+  end
+
+  describe "#camelize_and_stringify_keys" do
+    context "structure is a single hash" do
+      it "transforms the keys" do
+        data = { :joe_camel_case => "what", :ninja_turtles => "cowabunga" }
+        expect(camelize_and_stringify_keys(data)).to eq("joeCamelCase" => "what", "ninjaTurtles" => "cowabunga")
+      end
+    end
+
+    context "structure is hashes nested in an array" do
+      it "transforms the keys" do
+        data = [{ :joe_camel_case => "what" }, { :ninja_turtles => "cowabunga" }]
+        expect(camelize_and_stringify_keys(data)).to eq([{ "joeCamelCase" => "what" }, { "ninjaTurtles" => "cowabunga" }])
+      end
     end
   end
 end

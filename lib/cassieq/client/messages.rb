@@ -10,7 +10,8 @@ module Cassieq
       end
 
       def edit_message(queue_name, pop_receipt, options)
-        put("queues/#{queue_name}/messages", options.to_json, { popReceipt: pop_receipt })
+        body = camelize_and_stringify_keys(options).to_json
+        put("queues/#{queue_name}/messages", body, { popReceipt: pop_receipt })
       end
 
       def delete_message(queue_name, pop_receipt)

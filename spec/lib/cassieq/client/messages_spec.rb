@@ -1,11 +1,11 @@
 require "spec_helper"
 
 RSpec.describe Cassieq::Client::Messages do
-  let(:client) { Cassieq::Client.new(host: CONFIG["host"], account: "test", key: CONFIG["key"] )}
+  let(:client) { Cassieq::Client.new(host: CONFIG["host"], account: CONFIG["account"], key: CONFIG["key"] )}
   let(:create_message) { client.create_message("test_queue", "Test message!") }
   let(:next_message) { client.next_message("test_queue") }
 
-  before(:each) { client.create_queue(queueName: "test_queue") }
+  before(:each) { client.create_queue(queue_name: "test_queue") }
   after(:each) { client.delete_queue("test_queue") }
   
   describe "#create_message", vcr: { cassette_name: "messages/create_message" } do

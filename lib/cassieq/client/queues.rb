@@ -6,7 +6,8 @@ module Cassieq
       end
 
       def create_queue(options)
-        post("queues", options.to_json)
+        body = camelize_and_stringify_keys(options).to_json
+        post("queues", body)
       end
 
       def queue(queue_name)

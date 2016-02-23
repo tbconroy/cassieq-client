@@ -11,6 +11,7 @@ module Cassieq
     include Cassieq::Client::Queues
     include Cassieq::Client::Messages
     include Cassieq::Client::Statistics
+    include Cassieq::Utils
 
     attr_accessor :host, :account, :port, :key, :auth, :sig
 
@@ -79,8 +80,8 @@ module Cassieq
     def handle_response(&request_block)
       response = request_block.call
       Cassieq::Error.from_status_and_body(response)
-      unless response.body.nil? || response.body.empty?
-        Cassieq::Utils.transform_keys(response.body)
+      unless response.body.empty?
+        underscore_and_symobolize_keys(response.body)
       else
         true
       end

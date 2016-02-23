@@ -1,8 +1,8 @@
 require "spec_helper"
 
 RSpec.describe Cassieq::Client::Queues do
-  let(:client) { Cassieq::Client.new(host: CONFIG["host"], account: "test", key: CONFIG["key"] )}
-  let(:create_queue) { client.create_queue(queueName: "test_queue") }
+  let(:client) { Cassieq::Client.new(host: CONFIG["host"], account: CONFIG["account"], key: CONFIG["key"] )}
+  let(:create_queue) { client.create_queue(queue_name: "test_queue") }
   let(:delete_queue) { client.delete_queue("test_queue") }
 
   describe "#create_queue", vcr: { cassette_name: "queues/create_queue" } do
@@ -19,7 +19,7 @@ RSpec.describe Cassieq::Client::Queues do
       create_queue
       expect(queues.size).to eq(1)
       expect(queues[0].size).to eq(12)
-      expect(queues[0]).to include(account_name: "test", queue_name: "test_queue", id: "test:test_queue_v0")
+      expect(queues[0]).to include(account_name: "test-account", queue_name: "test_queue", id: "test-account:test_queue_v0")
       delete_queue
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe Cassieq::Client::Queues do
     it "returns information about the queue" do
       create_queue
       expect(queue.size).to eq(12)
-      expect(queue).to include(account_name: "test", queue_name: "test_queue", id: "test:test_queue_v0")
+      expect(queue).to include(account_name: "test-account", queue_name: "test_queue", id: "test-account:test_queue_v0")
       delete_queue
     end 
   end

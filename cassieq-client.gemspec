@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
-  s.name = "cassieq_client"
-  s.version = "0.0.0"
+  s.name = "cassieq-client"
+  s.version = "0.0.1"
   s.date = "2016-02-15"
-  s.summary = "CassieQ API Wrapper"
-  s.description = "A simple wrapper for the CassieQ api"
+  s.summary = "CassieQ Client"
+  s.description = "A simple wrapper for the CassieQ API"
   s.authors = ["Tom Conroy"]
   s.email = "tbconroy@gmail.com"
-  s.homepage = "https://github.com/tronroy/cassieq_client"
+  s.homepage = "https://github.com/tronroy/cassieq-client"
   s.files += Dir.glob("lib/**/*.rb")
   s.add_dependency "activesupport", "~>4.2"
   s.add_dependency "faraday", "~> 0.9"

@@ -15,13 +15,14 @@ module Cassieq
 
     attr_accessor :host, :account, :port, :key, :auth, :sig
 
-    def initialize(params)
+    def initialize(params = {})
       @host = params.fetch(:host, nil)
       @key = params.fetch(:key, nil)
       @auth = params.fetch(:auth, nil)
       @sig = params.fetch(:sig, nil)
       @account = params.fetch(:account, nil)
       @port = params.fetch(:port, 8080)
+      yield(self) if block_given?
     end
 
     private

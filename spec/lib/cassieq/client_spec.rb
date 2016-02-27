@@ -14,9 +14,9 @@ RSpec.describe Cassieq::Client do
     end
   end
 
-  context "with query param based authorization", vcr: { cassette_name: "client/query_param_auth" } do
-    let(:query_param_auth) { { auth: "g", sig: CONFIG["sig"] } }
-    let(:params) { base_params.merge(query_param_auth) }
+  context "with query param based authorization", vcr: { cassette_name: "client/signed_query_string_auth" } do
+    let(:signed_query_string_auth) { { provided_params: CONFIG["provided_params"] } }
+    let(:params) { base_params.merge(signed_query_string_auth) }
 
     it "succeeds" do
       response = client.queues

@@ -1,4 +1,5 @@
 #CassieQ Client
+[![Gem Version](https://badge.fury.io/rb/cassieq-client.svg)](https://badge.fury.io/rb/cassieq-client)
 [![Build Status](https://travis-ci.org/tronroy/cassieq-client.svg?branch=master)](https://travis-ci.org/tronroy/cassieq-client)
 
 A Ruby API wrapper for [CassieQ](https://github.com/paradoxical-io/cassieq)
@@ -25,16 +26,15 @@ client = Cassieq::Client.new do |config|
   config.key = "7dCFl6xxco1NIQSxSpseW5olftHHxHlc6Q12DY5VkBkCCs8_q3JrvYgPZapUSJ6PcaQDElunMsEFwDuOi6tQFQ"
 end
 ```
-With query string authentication claims:
+With signed query string authentication, i.e. "claims":
 ```
 client = Cassieq::Client.new do |config|
   config.host = "192.168.99.100"
   config.account = "account_name"
-  config.auth = "puag"
-  config.sig = "NygRs9GBh9n_i2s7KTMof0us-RXm5nt3RnlWKb3N15A"
+  config.query_params = "auth=g&sig=9aw5gn22G-WN-RRBSQPR1zHgZHbiuv8SsFeODevDiqs"
 end
 ```
-Read more about CassieQ's [authentication](https://github.com/paradoxical-io/cassieq/wiki/Authentication).
+Read more about CassieQ's authentication [here](https://github.com/paradoxical-io/cassieq/wiki/Authentication).
 
 ###Create a queue
 ```

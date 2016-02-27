@@ -13,13 +13,12 @@ module Cassieq
     include Cassieq::Client::Statistics
     include Cassieq::Utils
 
-    attr_accessor :host, :account, :port, :key, :auth, :sig
+    attr_accessor :host, :account, :port, :key, :provided_params
 
     def initialize(params = {})
       @host = params.fetch(:host, nil)
       @key = params.fetch(:key, nil)
-      @auth = params.fetch(:auth, nil)
-      @sig = params.fetch(:sig, nil)
+      @provided_params = params.fetch(:provided_params, nil)
       @account = params.fetch(:account, nil)
       @port = params.fetch(:port, 8080)
       yield(self) if block_given?
@@ -39,10 +38,7 @@ module Cassieq
         conn.port = port
         conn.path_prefix = path_prefix
         conn.headers["Authorization"] = "Key #{key}" unless key.nil?
-        unless auth.nil? || sig.nil?
-          conn.params["auth"] = auth
-          conn.params["sig"] = sig
-        end
+        conn.params.merge_query(provided_params) unless provided_params.nil?
         conn.response :json, :content_type => /\bjson$/
       end
     end

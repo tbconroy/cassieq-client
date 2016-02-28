@@ -7,10 +7,12 @@ http_interactions:
       encoding: UTF-8
       string: '{"queueName":"test_queue"}'
     headers:
-      Authorization:
-      - Key <KEY>
       User-Agent:
       - Faraday v0.9.2
+      X-Cassieq-Request-Time:
+      - '2016-02-28T23:17:49Z'
+      Authorization:
+      - Signed QIXmCE92UgFUL4simu8XrLqYOyp12sawgJoOMC01v_k
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -23,14 +25,14 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 23 Feb 2016 19:45:36 GMT
+      - Sun, 28 Feb 2016 23:17:49 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 23 Feb 2016 19:45:36 GMT
+  recorded_at: Sun, 28 Feb 2016 23:17:49 GMT
 - request:
     method: post
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages
@@ -38,10 +40,12 @@ http_interactions:
       encoding: UTF-8
       string: Test message!
     headers:
-      Authorization:
-      - Key <KEY>
       User-Agent:
       - Faraday v0.9.2
+      X-Cassieq-Request-Time:
+      - '2016-02-28T23:17:49Z'
+      Authorization:
+      - Signed 48x6T0XDi1xx7qDCrkxV8I7TONg9J_sULyMb_pBkSlw
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -54,14 +58,14 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 23 Feb 2016 19:45:36 GMT
+      - Sun, 28 Feb 2016 23:17:49 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 23 Feb 2016 19:45:36 GMT
+  recorded_at: Sun, 28 Feb 2016 23:17:49 GMT
 - request:
     method: delete
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue
@@ -69,10 +73,12 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Key <KEY>
       User-Agent:
       - Faraday v0.9.2
+      X-Cassieq-Request-Time:
+      - '2016-02-28T23:17:49Z'
+      Authorization:
+      - Signed 7q76-g5FkiBoG8ZqImU75RjTJqa8GO6yBBcceOLfa2A
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -83,12 +89,12 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 23 Feb 2016 19:45:36 GMT
+      - Sun, 28 Feb 2016 23:17:49 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 23 Feb 2016 19:45:36 GMT
+  recorded_at: Sun, 28 Feb 2016 23:17:50 GMT
 recorded_with: VCR 3.0.1

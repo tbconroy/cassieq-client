@@ -2,7 +2,7 @@
 [![Gem Version](https://badge.fury.io/rb/cassieq-client.svg)](https://badge.fury.io/rb/cassieq-client)
 [![Build Status](https://travis-ci.org/tronroy/cassieq-client.svg?branch=master)](https://travis-ci.org/tronroy/cassieq-client)
 
-A Ruby API wrapper for [CassieQ](https://github.com/paradoxical-io/cassieq)
+A Ruby wrapper for the [CassieQ](https://github.com/paradoxical-io/cassieq) API
 
 ##Installation
 Install from RubyGems:
@@ -45,7 +45,7 @@ See CassieQ's API [documentation](https://github.com/paradoxical-io/cassieq/wiki
 
 ###Add message to queue
 ```
-client.create_message("my_queue", "message content")
+client.publish_message("my_queue", "message content")
 # => true
 ```
 
@@ -58,6 +58,6 @@ client.next_message("my_queue")
 ###Ack message
 ```
 pop_receipt = "MToyOkEyMnBLZw"
-client.delete_message("my_queue", pop_receipt)
+client.ack_message("my_queue", pop_receipt)
 # => true
 ```

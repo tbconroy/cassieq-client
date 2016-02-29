@@ -18,7 +18,7 @@ require "cassieq/client"
 ##Usage
 
 ###Create a client
-With key based authentication:
+With signed request authentication:
 ```
 client = Cassieq::Client.new do |config| 
   config.host = "192.168.99.100"
@@ -31,7 +31,7 @@ With signed query string authentication, i.e. "claims":
 client = Cassieq::Client.new do |config|
   config.host = "192.168.99.100"
   config.account = "account_name"
-  config.query_params = "auth=g&sig=9aw5gn22G-WN-RRBSQPR1zHgZHbiuv8SsFeODevDiqs"
+  config.provided_params = "auth=g&sig=9aw5gn22G-WN-RRBSQPR1zHgZHbiuv8SsFeODevDiqs"
 end
 ```
 Read more about CassieQ's authentication [here](https://github.com/paradoxical-io/cassieq/wiki/Authentication).

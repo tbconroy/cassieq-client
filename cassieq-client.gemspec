@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "cassieq-client"
-  s.version = "0.0.1"
+  s.version = "0.1.0"
   s.date = "2016-02-15"
   s.summary = "CassieQ Client"
   s.description = "A Ruby API wrapper for CassieQ"

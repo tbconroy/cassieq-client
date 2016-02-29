@@ -30,7 +30,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<HOST>") { CONFIG["host"] }
   config.filter_sensitive_data("<ACCOUNT>") { CONFIG["account"] }
   config.filter_sensitive_data("<KEY>") { CONFIG["key"] }
-  config.filter_sensitive_data("<SIG>") { CONFIG["sig"] }
+  config.filter_sensitive_data("<PROVIDED_PARAMS>") { CONFIG["provided_params"] }
 end
 
 RSpec.configure do |config|

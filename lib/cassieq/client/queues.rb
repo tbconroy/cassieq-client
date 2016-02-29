@@ -1,21 +1,23 @@
+require "json"
+
 module Cassieq
   class Client
     module Queues
       def queues
-        get("queues")
+        request(:get, "queues")
       end
 
       def create_queue(options)
         body = camelize_and_stringify_keys(options).to_json
-        post("queues", body)
+        request(:post, "queues", body)
       end
 
       def queue(queue_name)
-        get("queues/#{queue_name}")
+        request(:get, "queues/#{queue_name}")
       end
 
       def delete_queue(queue_name)
-        delete("queues/#{queue_name}")
+        request(:delete, "queues/#{queue_name}")
       end
     end
   end 

@@ -1,5 +1,6 @@
 require "faraday"
 require "faraday_middleware"
+require "cassieq/authentication"
 require "cassieq/client/messages"
 require "cassieq/client/statistics"
 require "cassieq/client/queues"
@@ -11,15 +12,15 @@ module Cassieq
     include Cassieq::Client::Queues
     include Cassieq::Client::Messages
     include Cassieq::Client::Statistics
+    include Cassieq::Authentication
     include Cassieq::Utils
 
-    attr_accessor :host, :account, :port, :key, :auth, :sig
+    attr_accessor :host, :account, :port, :key, :provided_params
 
     def initialize(params = {})
       @host = params.fetch(:host, nil)
       @key = params.fetch(:key, nil)
-      @auth = params.fetch(:auth, nil)
-      @sig = params.fetch(:sig, nil)
+      @provided_params = params.fetch(:provided_params, nil)
       @account = params.fetch(:account, nil)
       @port = params.fetch(:port, 8080)
       yield(self) if block_given?
@@ -38,43 +39,30 @@ module Cassieq
         conn.host = host
         conn.port = port
         conn.path_prefix = path_prefix
-        conn.headers["Authorization"] = "Key #{key}" unless key.nil?
-        unless auth.nil? || sig.nil?
-          conn.params["auth"] = auth
-          conn.params["sig"] = sig
-        end
+        conn.params.merge_query(provided_params) unless provided_params.nil?
         conn.response :json, :content_type => /\bjson$/
       end
     end
 
-    def get(path)
+    def request(method, path, body = nil, params = nil)
       handle_response do
-        connection.run_request(:get, path, nil, nil)
-      end
-    end
-
-    def post(path, body)
-      handle_response do
-        connection.run_request(:post, path, body, nil) do |req|
-          req.headers.merge!("Content-Type" => "application/json")
+        auth_headers = generate_auth_headers(method, path)
+        connection.run_request(method, path, body, auth_headers) do |req|
+          req.params.merge!(params) unless params.nil?
+          req.headers["Content-Type"] = "application/json" unless body.nil?
         end
       end
     end
 
-    def put(path, body, params = {})
-      handle_response do
-        connection.run_request(:put, path, body, nil) do |req|
-          req.params.merge!(params)
-          req.headers.merge!("Content-Type" => "application/json")
-        end
-      end
-    end
+    def generate_auth_headers(method, path)
+      unless key.nil?
+        request_time = formated_time_now
+        request_path = "#{path_prefix}/#{path}"
+        auth_signature = generate_signature_from_key(key, method.to_s.upcase, account, request_path, request_time)
 
-    def delete(path, params = {})
-      handle_response do
-        connection.run_request(:delete, path, nil, nil) do |req|
-          req.params.merge!(params)
-        end
+        { "X-Cassieq-Request-Time" => request_time, "Authorization" => "Signed #{auth_signature}" }
+      else
+        nil
       end
     end
 

@@ -11,6 +11,10 @@ module Cassieq
       transform_keys_in_structure(data) { |key| key.to_s.camelize(:lower) }
     end
 
+    def formated_time_now
+      Time.now.utc.iso8601
+    end
+
     private
 
     def transform_keys_in_structure(data)
@@ -24,4 +28,4 @@ module Cassieq
       end
     end
   end
-end
+end 

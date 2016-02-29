@@ -28,41 +28,33 @@ module Cassieq
 
     private
 
-    def path_prefix
-      "/api/v1/accounts/#{account}"
-    end
-
     def connection
       Faraday.new do |conn|
         conn.request(:url_encoded)
         conn.adapter(Faraday.default_adapter)
         conn.host = host
         conn.port = port
-        conn.path_prefix = path_prefix
         conn.params.merge_query(provided_params) unless provided_params.nil?
         conn.response :json, :content_type => /\bjson$/
       end
     end
 
+    def path_prefix
+      "/api/v1/accounts/#{account}"
+    end
+
+    def request_path(path)
+      "#{path_prefix}/#{path}"
+    end
+
     def request(method, path, body = nil, params = nil)
       handle_response do
-        auth_headers = generate_auth_headers(method, path)
+        path = request_path(path)
+        auth_headers = generate_auth_headers(method, path) unless key.nil?
         connection.run_request(method, path, body, auth_headers) do |req|
           req.params.merge!(params) unless params.nil?
           req.headers["Content-Type"] = "application/json" unless body.nil?
         end
-      end
-    end
-
-    def generate_auth_headers(method, path)
-      unless key.nil?
-        request_time = formated_time_now
-        request_path = "#{path_prefix}/#{path}"
-        auth_signature = generate_signature_from_key(key, method.to_s.upcase, account, request_path, request_time)
-
-        { "X-Cassieq-Request-Time" => request_time, "Authorization" => "Signed #{auth_signature}" }
-      else
-        nil
       end
     end
 

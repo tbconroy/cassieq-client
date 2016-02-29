@@ -19,7 +19,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sun, 28 Feb 2016 23:17:43 GMT
+      - Mon, 29 Feb 2016 20:14:38 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -32,5 +32,5 @@ http_interactions:
           "message" : "HTTP 401 Unauthorized"
         }
     http_version: 
-  recorded_at: Sun, 28 Feb 2016 23:17:43 GMT
+  recorded_at: Mon, 29 Feb 2016 20:14:38 GMT
 recorded_with: VCR 3.0.1

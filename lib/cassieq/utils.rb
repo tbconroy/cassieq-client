@@ -1,5 +1,6 @@
 require "active_support/core_ext/hash/keys"
 require "active_support/inflector"
+require "time"
 
 module Cassieq
   module Utils

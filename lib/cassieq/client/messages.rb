@@ -3,7 +3,7 @@ require "json"
 module Cassieq
   class Client
     module Messages
-      def create_message(queue_name, message)
+      def publish_message(queue_name, message)
         request(:post, "queues/#{queue_name}/messages", message)
       end
 
@@ -17,7 +17,7 @@ module Cassieq
         request(:put, "queues/#{queue_name}/messages", body, params)
       end
 
-      def delete_message(queue_name, pop_receipt)
+      def ack_message(queue_name, pop_receipt)
         params = { popReceipt: pop_receipt }
         request(:delete, "queues/#{queue_name}/messages", nil, params)
       end

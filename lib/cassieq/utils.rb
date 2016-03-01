@@ -1,9 +1,10 @@
 require "active_support/core_ext/hash/keys"
 require "active_support/inflector"
-require "time"
 
 module Cassieq
   module Utils
+    private
+
     def underscore_and_symobolize_keys(data)
       transform_keys_in_structure(data) { |key| key.underscore.to_sym }
     end
@@ -11,12 +12,6 @@ module Cassieq
     def camelize_and_stringify_keys(data)
       transform_keys_in_structure(data) { |key| key.to_s.camelize(:lower) }
     end
-
-    def formated_time_now
-      Time.now.utc.iso8601
-    end
-
-    private
 
     def transform_keys_in_structure(data)
       case data

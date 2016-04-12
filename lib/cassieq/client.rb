@@ -42,25 +42,19 @@ module Cassieq
       "/api/v1/accounts/#{account}"
     end
 
-    def request_path(path)
-      "#{path_prefix}/#{path}"
-    end
-
-    def request(method, path, body = nil, params = nil)
+    def request(method, path, body = nil, params = {})
       handle_response do
-        path = request_path(path)
-        auth_headers = generate_auth_headers(method, path)
-        connection.run_request(method, path, body, auth_headers) do |req|
-          req.params.merge!(params) unless params.nil?
-          req.headers["Content-Type"] = "application/json" unless body.nil?
+        request_path = "#{path_prefix}/#{path}"
+        connection.run_request(method, request_path, body, nil) do |req|
+          req.params.merge!(params)
+          req.headers.merge!(generate_auth_headers(method, request_path)) unless key.nil?
+          req.headers.merge!("Content-Type" => "application/json") unless body.nil?
         end
       end
     end
 
     def generate_auth_headers(method, path)
-      unless key.nil?
-        Cassieq::Authentication.generate_auth_headers(key, account, method, path)
-      end
+      Cassieq::Authentication.generate_auth_headers(key, account, method, path)
     end
 
     def handle_response(&request_block)

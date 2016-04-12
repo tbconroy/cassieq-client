@@ -10,9 +10,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-02-29T20:14:38Z'
+      - '2016-04-12T00:42:13Z'
       Authorization:
-      - Signed 9qTcZ_bFg9kLItNgUPchx4pPUtdggY_KZPVys_lXNwY
+      - Signed Sb30PGp2XGyuxB3UGMeVo30PdjNOzR4F2pLuXLJmaAE
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 29 Feb 2016 20:14:38 GMT
+      - Tue, 12 Apr 2016 00:42:13 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -32,5 +32,5 @@ http_interactions:
       encoding: UTF-8
       string: "[ ]"
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 20:14:38 GMT
+  recorded_at: Tue, 12 Apr 2016 00:42:13 GMT
 recorded_with: VCR 3.0.1

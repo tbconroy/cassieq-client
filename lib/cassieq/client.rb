@@ -12,16 +12,15 @@ module Cassieq
     include Cassieq::Client::Queues
     include Cassieq::Client::Messages
     include Cassieq::Client::Statistics
-    include Cassieq::Authentication
     include Cassieq::Utils
 
     attr_accessor :host, :account, :port, :key, :provided_params
 
     def initialize(params = {})
-      @host = params.fetch(:host, nil)
-      @key = params.fetch(:key, nil)
-      @provided_params = params.fetch(:provided_params, nil)
-      @account = params.fetch(:account, nil)
+      @host = params[:host]
+      @key = params[:key]
+      @provided_params = params[:provided_params]
+      @account = params[:account]
       @port = params.fetch(:port, 8080)
       yield(self) if block_given?
     end
@@ -50,11 +49,17 @@ module Cassieq
     def request(method, path, body = nil, params = nil)
       handle_response do
         path = request_path(path)
-        auth_headers = generate_auth_headers(method, path) unless key.nil?
+        auth_headers = generate_auth_headers(method, path)
         connection.run_request(method, path, body, auth_headers) do |req|
           req.params.merge!(params) unless params.nil?
           req.headers["Content-Type"] = "application/json" unless body.nil?
         end
+      end
+    end
+
+    def generate_auth_headers(method, path)
+      unless key.nil?
+        Cassieq::Authentication.generate_auth_headers(key, account, method, path)
       end
     end
 

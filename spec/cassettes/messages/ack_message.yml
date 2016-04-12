@@ -10,9 +10,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-02-29T20:41:30Z'
+      - '2016-04-12T00:42:10Z'
       Authorization:
-      - Signed wG4Gyb8WVOMqWtNtYh2AgWhbCg62xCOrazLR4e9Vu_I
+      - Signed Wb-x1JBzuW80Lgt9OwCzMqIPUhQOo9VgaKiVSHQQvxI
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -25,14 +25,14 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 29 Feb 2016 20:41:30 GMT
+      - Tue, 12 Apr 2016 00:42:10 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 20:41:30 GMT
+  recorded_at: Tue, 12 Apr 2016 00:42:10 GMT
 - request:
     method: post
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages
@@ -43,9 +43,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-02-29T20:41:30Z'
+      - '2016-04-12T00:42:10Z'
       Authorization:
-      - Signed QJGju5mM-L5npYuASRd_TjYRbMIVbFjANO5_TN9wEaY
+      - Signed dU6bCx4nw48RtKG3tG2XnrNTNuIAc1dfP5qxSWSvTXM
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -58,14 +58,14 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 29 Feb 2016 20:41:30 GMT
+      - Tue, 12 Apr 2016 00:42:10 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 20:41:30 GMT
+  recorded_at: Tue, 12 Apr 2016 00:42:10 GMT
 - request:
     method: get
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages/next
@@ -76,9 +76,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-02-29T20:41:30Z'
+      - '2016-04-12T00:42:10Z'
       Authorization:
-      - Signed QddCcK3_XM6fMYeLoO9G85z1j3RBue3Jrj-weGei8sw
+      - Signed qaP0HE8yAtEx5ZTmstTwSNn0LvVapU0UF9-g7eylRl0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -89,7 +89,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 29 Feb 2016 20:41:30 GMT
+      - Tue, 12 Apr 2016 00:42:10 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -98,16 +98,16 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "popReceipt" : "MDoyOnhGZklpQQ",
+          "popReceipt" : "MDoyOnBmK0N3UQ",
           "message" : "Test message!",
           "deliveryCount" : 0,
-          "messageTag" : "xFfIiA"
+          "messageTag" : "pf+CwQ"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 20:41:30 GMT
+  recorded_at: Tue, 12 Apr 2016 00:42:11 GMT
 - request:
     method: delete
-    uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages?popReceipt=MDoyOnhGZklpQQ
+    uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages?popReceipt=MDoyOnBmK0N3UQ
     body:
       encoding: US-ASCII
       string: ''
@@ -115,9 +115,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-02-29T20:41:30Z'
+      - '2016-04-12T00:42:11Z'
       Authorization:
-      - Signed lrWsu3m4WLMPeIxIJ41bEhTx3ycYhfVhTgTRVzi8ac0
+      - Signed 5XyGPisXNiN5wo8wq2SEbtUyZO6FvoiUUPN9SrrxVG8
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -128,12 +128,12 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Mon, 29 Feb 2016 20:41:30 GMT
+      - Tue, 12 Apr 2016 00:42:11 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 20:41:30 GMT
+  recorded_at: Tue, 12 Apr 2016 00:42:11 GMT
 - request:
     method: delete
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue
@@ -144,9 +144,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-02-29T20:41:30Z'
+      - '2016-04-12T00:42:11Z'
       Authorization:
-      - Signed 8oNuGhBVW-7LMDCY8DRxZq5GGvmmxFRQFqFe7LmwqV0
+      - Signed 44uyLImFH0y_WrBjitpe6I0xI1qW6zDOtp4A6YKzI9M
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -157,12 +157,12 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 29 Feb 2016 20:41:30 GMT
+      - Tue, 12 Apr 2016 00:42:11 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 20:41:31 GMT
+  recorded_at: Tue, 12 Apr 2016 00:42:11 GMT
 recorded_with: VCR 3.0.1

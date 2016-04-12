@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 28 Feb 2016 23:30:50 GMT
+      - Tue, 12 Apr 2016 00:42:13 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -28,5 +28,5 @@ http_interactions:
       encoding: UTF-8
       string: "[ ]"
     http_version: 
-  recorded_at: Sun, 28 Feb 2016 23:30:50 GMT
+  recorded_at: Tue, 12 Apr 2016 00:42:13 GMT
 recorded_with: VCR 3.0.1

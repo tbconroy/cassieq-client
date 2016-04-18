@@ -12,7 +12,7 @@ RSpec.describe Cassieq::Client::Queues do
     it "returns statistical information" do
       create_queue
       publish_message
-      expect(statistics).to eq(size: 1)
+      expect(statistics).to have_attributes(size: 1)
       delete_queue
     end
   end

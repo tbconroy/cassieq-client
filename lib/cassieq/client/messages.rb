@@ -1,8 +1,11 @@
+require "cassieq/utils"
 require "json"
 
 module Cassieq
   class Client
     module Messages
+      include Cassieq::Utils
+
       def publish_message(queue_name, message)
         request(:post, "queues/#{queue_name}/messages", message)
       end
@@ -12,7 +15,7 @@ module Cassieq
       end
 
       def edit_message(queue_name, pop_receipt, options)
-        body = camelize_and_stringify_keys(options).to_json
+        body = Cassieq::Utils.camelize_and_stringify_keys(options).to_json
         params = { popReceipt: pop_receipt }
         request(:put, "queues/#{queue_name}/messages", body, params)
       end

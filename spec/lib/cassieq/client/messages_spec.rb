@@ -17,11 +17,7 @@ RSpec.describe Cassieq::Client::Messages do
   describe "#next_message", vcr: { cassette_name: "messages/next_message" } do
     it "returns message" do
       publish_message
-      expect(next_message.size).to be(4)
-      expect(next_message[:message]).to eq("Test message!")
-      expect(next_message[:delivery_count]).to eq(0)
-      expect(next_message[:pop_receipt]).to match(/\w+/)
-      expect(next_message[:message_tag]).to match(/\w+/)
+      expect(next_message).to have_attributes(message: "Test message!", delivery_count: 0, pop_receipt: /\w+/, message_tag: /\w+/)
     end
   end
 
@@ -30,9 +26,7 @@ RSpec.describe Cassieq::Client::Messages do
 
     it "returns information about the message" do
       publish_message
-      expect(edit_message.size).to be(2)
-      expect(edit_message[:pop_receipt]).to match(/\w+/)
-      expect(edit_message[:message_tag]).to match(/\w+/)
+      expect(edit_message).to have_attributes(pop_receipt: /\w+/, message_tag: /\w+/)
     end 
   end
 

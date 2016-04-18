@@ -18,8 +18,8 @@ RSpec.describe Cassieq::Client::Queues do
     it "returns information about all queues" do
       create_queue
       expect(queues.size).to eq(1)
-      expect(queues[0].size).to eq(13)
-      expect(queues[0]).to include(account_name: CONFIG["account"], queue_name: "test_queue", id: "#{CONFIG["account"]}:test_queue_v0")
+      expect(queues[0].to_h.size).to eq(13)
+      expect(queues[0]).to have_attributes(account_name: CONFIG["account"], queue_name: "test_queue", id: "#{CONFIG["account"]}:test_queue_v0")
       delete_queue
     end
   end
@@ -29,8 +29,8 @@ RSpec.describe Cassieq::Client::Queues do
 
     it "returns information about the queue" do
       create_queue
-      expect(queue.size).to eq(13)
-      expect(queue).to include(account_name: CONFIG["account"], queue_name: "test_queue", id: "#{CONFIG["account"]}:test_queue_v0")
+      expect(queue.to_h.size).to eq(13)
+      expect(queue).to have_attributes(account_name: CONFIG["account"], queue_name: "test_queue", id: "#{CONFIG["account"]}:test_queue_v0")
       delete_queue
     end 
   end

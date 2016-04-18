@@ -25,6 +25,7 @@ CONFIG = YAML.load_file("#{Dir.pwd}/spec/config.yml")
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/cassettes"
+  config.default_cassette_options = { match_requests_on: [:method, :uri, :body]}
   config.hook_into(:webmock)
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<HOST>") { CONFIG["host"] }

@@ -12,7 +12,6 @@ module Cassieq
     include Cassieq::Client::Queues
     include Cassieq::Client::Messages
     include Cassieq::Client::Statistics
-    include Cassieq::Utils
 
     attr_accessor :host, :account, :port, :key, :provided_params
 
@@ -43,17 +42,18 @@ module Cassieq
     end
 
     def request(method, path, body = nil, params = {})
+      request_path = "#{path_prefix}/#{path}"
+
       handle_response do
-        request_path = "#{path_prefix}/#{path}"
         connection.run_request(method, request_path, body, nil) do |req|
           req.params.merge!(params)
-          req.headers.merge!(generate_auth_headers(method, request_path)) unless key.nil?
+          req.headers.merge!(auth_headers(method, request_path)) unless key.nil?
           req.headers.merge!("Content-Type" => "application/json") unless body.nil?
         end
       end
     end
 
-    def generate_auth_headers(method, path)
+    def auth_headers(method, path)
       Cassieq::Authentication.generate_auth_headers(key, account, method, path)
     end
 
@@ -61,7 +61,7 @@ module Cassieq
       response = request_block.call
       Cassieq::Error.from_status_and_body(response)
       unless response.body.empty?
-        underscore_and_symobolize_keys(response.body)
+        Cassieq::Utils.underscore_and_symobolize_keys(response.body)
       else
         true
       end

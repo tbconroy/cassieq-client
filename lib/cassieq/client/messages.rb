@@ -12,7 +12,7 @@ module Cassieq
       end
 
       def edit_message(queue_name, pop_receipt, options)
-        body = camelize_and_stringify_keys(options).to_json
+        body = Cassieq::Utils.camelize_and_stringify_keys(options).to_json
         params = { popReceipt: pop_receipt }
         request(:put, "queues/#{queue_name}/messages", body, params)
       end

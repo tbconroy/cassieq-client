@@ -8,7 +8,7 @@ module Cassieq
       end
 
       def create_queue(options)
-        body = camelize_and_stringify_keys(options).to_json
+        body = Cassieq::Utils.camelize_and_stringify_keys(options).to_json
         request(:post, "queues", body)
       end
 

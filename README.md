@@ -25,6 +25,7 @@ client = Cassieq::Client.new do |config|
   config.account = "account_name"
   config.key = "7dCFl6xxco1NIQSxSpseW5olftHHxHlc6Q12DY5VkBkCCs8_q3JrvYgPZapUSJ6PcaQDElunMsEFwDuOi6tQFQ"
 end
+=> #<Cassieq::Client:0x007fdc4b10ab10 ... >
 ```
 With signed query string authentication, i.e. "claims":
 ```
@@ -33,6 +34,7 @@ client = Cassieq::Client.new do |config|
   config.account = "account_name"
   config.provided_params = "auth=g&sig=9aw5gn22G-WN-RRBSQPR1zHgZHbiuv8SsFeODevDiqs"
 end
+=> #<Cassieq::Client:0x007f839b840118 ... >
 ```
 Read more about CassieQ's authentication [here](https://github.com/paradoxical-io/cassieq/wiki/Authentication).
 
@@ -51,13 +53,15 @@ client.publish_message("my_queue", "message content")
 
 ###Get message from a queue
 ```
-client.next_message("my_queue")
-# => {:pop_receipt=>"MToyOkEyMnBLZw", :message=>"message content", :delivery_count=>0, :message_tag=>"A22pKg"}
+message_object = client.next_message("my_queue")
+# => #<Cassieq::Message:70292061736200>
+
+message_object.message = "message content"
+message_object.deliver_count = 0
 ```
 
 ###Ack message
 ```
-pop_receipt = "MToyOkEyMnBLZw"
-client.ack_message("my_queue", pop_receipt)
+client.ack_message("my_queue", message_object.pop_receipt)
 # => true
 ```

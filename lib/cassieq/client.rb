@@ -5,7 +5,7 @@ require "cassieq/client/messages"
 require "cassieq/client/statistics"
 require "cassieq/client/queues"
 require "cassieq/error"
-require "cassieq/response"
+require "cassieq/resource_factory"
 
 module Cassieq
   class Client
@@ -41,10 +41,10 @@ module Cassieq
       "/api/v1/accounts/#{account}"
     end
 
-    def request(method, path, body = nil, params = {})
+    def request(method, resource_class, path, body = nil, params = {})
       request_path = "#{path_prefix}/#{path}"
 
-      handle_response do
+      handle_response(resource_class) do
         connection.run_request(method, request_path, body, nil) do |req|
           req.params.merge!(params)
           req.headers.merge!(auth_headers(method, request_path)) unless key.nil?
@@ -57,11 +57,11 @@ module Cassieq
       Cassieq::Authentication.generate_auth_headers(key, account, method, path)
     end
 
-    def handle_response(&request_block)
+    def handle_response(resource_class, &request_block)
       response = request_block.call
       Cassieq::Error.from_status_and_body(response)
-      unless response.body.empty?
-        Cassieq::Response.create_response(response.body)
+      unless response.body.empty? || resource_class.nil?
+        Cassieq::ResourceFactory.build(resource_class, response.body)
       else
         true
       end

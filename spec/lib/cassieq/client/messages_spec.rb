@@ -26,7 +26,7 @@ RSpec.describe Cassieq::Client::Messages do
 
     it "returns information about the message" do
       publish_message
-      expect(edit_message).to have_attributes(pop_receipt: /\w+/, message_tag: /\w+/)
+      expect(edit_message).to have_attributes(message: nil, pop_receipt: /\w+/, delivery_count: nil, message_tag: /\w+/)
     end 
   end
 

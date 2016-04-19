@@ -10,9 +10,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-04-18T19:22:49Z'
+      - '2016-04-19T18:17:09Z'
       Authorization:
-      - Signed l6-7Xq28vpSy8sSKY3cxLjkEKXwYLaAarjLqZYBYaeg
+      - Signed ZS3PdcyDhH9GSxjTyn1KPzHMVXJ3eE29eWKdm1Lc574
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -25,14 +25,14 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 18 Apr 2016 19:22:49 GMT
+      - Tue, 19 Apr 2016 18:17:08 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 19:22:50 GMT
+  recorded_at: Tue, 19 Apr 2016 18:17:09 GMT
 - request:
     method: post
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages
@@ -43,9 +43,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-04-18T19:22:50Z'
+      - '2016-04-19T18:17:09Z'
       Authorization:
-      - Signed RBPQ11WMVqBVgffufp6wQT7o2OF9K1lr6TAELhPV1Tg
+      - Signed ypT4osdfgk6yEJRu9BlVq4U8-HKF0Vki5H_8d2S5T6w
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -58,14 +58,14 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 18 Apr 2016 19:22:50 GMT
+      - Tue, 19 Apr 2016 18:17:09 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 19:22:50 GMT
+  recorded_at: Tue, 19 Apr 2016 18:17:09 GMT
 - request:
     method: get
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages/next
@@ -76,9 +76,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-04-18T19:22:50Z'
+      - '2016-04-19T18:17:09Z'
       Authorization:
-      - Signed _ps0Th_c4r3zi4iuxyIHxHzKW-HrZih5CnuWkDBPlf8
+      - Signed _zpwah0xnSJ16vf0Nr4w1eObPiDHEe0RpsVS0EMj7TA
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -89,7 +89,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 18 Apr 2016 19:22:50 GMT
+      - Tue, 19 Apr 2016 18:17:09 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -98,16 +98,16 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "popReceipt" : "MDoyOnBPRFlFUQ",
+          "popReceipt" : "MDoyOm1LQTUrQQ",
           "message" : "Test message!",
           "deliveryCount" : 0,
-          "messageTag" : "pODYEQ"
+          "messageTag" : "mKA5+A"
         }
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 19:22:50 GMT
+  recorded_at: Tue, 19 Apr 2016 18:17:09 GMT
 - request:
     method: put
-    uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages?popReceipt=MDoyOnBPRFlFUQ
+    uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue/messages?popReceipt=MDoyOm1LQTUrQQ
     body:
       encoding: UTF-8
       string: '{"message":"Tacos tonight!"}'
@@ -115,9 +115,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-04-18T19:22:50Z'
+      - '2016-04-19T18:17:09Z'
       Authorization:
-      - Signed q8snTvYiTnqJAy5w1uAUS1K7vmHS80zNEkhap5YaJks
+      - Signed 9e6ozEp1tIeBsfjXfOrOgjyHo-5mOchDFNPOmWYBwRM
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -130,7 +130,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 18 Apr 2016 19:22:50 GMT
+      - Tue, 19 Apr 2016 18:17:09 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -139,11 +139,11 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "popReceipt" : "MDozOnBPRFlFUQ",
-          "messageTag" : "pODYEQ"
+          "popReceipt" : "MDozOm1LQTUrQQ",
+          "messageTag" : "mKA5+A"
         }
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 19:22:50 GMT
+  recorded_at: Tue, 19 Apr 2016 18:17:09 GMT
 - request:
     method: delete
     uri: http://<HOST>:8080/api/v1/accounts/<ACCOUNT>/queues/test_queue
@@ -154,9 +154,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       X-Cassieq-Request-Time:
-      - '2016-04-18T19:22:50Z'
+      - '2016-04-19T18:17:09Z'
       Authorization:
-      - Signed InARxUrhm5XxtJfUz-3Oh3rbDilP4AYUJfo2xOlfVPw
+      - Signed UJwnZbgjczbi1YqVOWl4HOklM9FsVlQe4Ljvqp732Bo
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -167,12 +167,12 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 18 Apr 2016 19:22:50 GMT
+      - Tue, 19 Apr 2016 18:17:09 GMT
       Content-Length:
       - '0'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 19:22:50 GMT
+  recorded_at: Tue, 19 Apr 2016 18:17:09 GMT
 recorded_with: VCR 3.0.1

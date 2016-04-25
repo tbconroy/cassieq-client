@@ -37,16 +37,13 @@ module Cassieq
       end
     end
 
-    def path_prefix
-      "/api/v1/accounts/#{account}"
-    end
-
-    def request(method, path, body = nil, params = {})
+    def request(method, path, body = nil, params = nil)
+      path_prefix = "/api/v1/accounts/#{account}"
       request_path = "#{path_prefix}/#{path}"
 
       handle_response do
         connection.run_request(method, request_path, body, nil) do |req|
-          req.params.merge!(params)
+          req.params.merge!(params) unless params.nil?
           req.headers.merge!(auth_headers(method, request_path)) unless key.nil?
           req.headers.merge!("Content-Type" => "application/json") unless body.nil?
         end

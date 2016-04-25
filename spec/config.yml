@@ -5,5 +5,5 @@
 
 host: 192.168.99.100
 account: test-account
-key: C3RAOAbRVT-MBe7DL491-3oAzNJrzhqcYRANlNPqvSPcCUtTYa7flyhDpSPEM01b4bzNaQL1uvLMm5y4HDY3bA
-provided_params: auth=g&sig=JkGhEjsPBwrRbo2UGEwQd1vAaMfD_IrlKk3LkPxoDgA
+key: A1wOkHNznfi131jjuHmd61OQKPq5Su0hJVUf8WvmKHGHQMT5scgTeiDJWEBE-jt5nNzHMKBAu0pRC9aChxpLrQ
+provided_params: auth=g&sig=MkvORZbS11AS-pM1vFjfPPSdKEMSON6bPN6pF7n4zv0

@@ -2,8 +2,8 @@ require "spec_helper"
 
 RSpec.describe Cassieq::Client::Messages do
   let(:client) { Cassieq::Client.new(host: CONFIG["host"], account: CONFIG["account"], key: CONFIG["key"] )}
-  let(:publish_message) { client.publish_message("test_queue", "Test message!") }
-  let(:next_message) { client.next_message("test_queue") }
+  let(:publish_message) { client.publish_message("test_queue", "Test message!", 0) }
+  let(:next_message) { client.next_message("test_queue", 0) }
 
   before(:each) { client.create_queue(queue_name: "test_queue") }
   after(:each) { client.delete_queue("test_queue") }

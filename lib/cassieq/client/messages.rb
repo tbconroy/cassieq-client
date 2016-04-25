@@ -3,12 +3,14 @@ require "json"
 module Cassieq
   class Client
     module Messages
-      def publish_message(queue_name, message)
-        request(:post, "queues/#{queue_name}/messages", message)
+      def publish_message(queue_name, message, initial_invis_time = nil)
+        query = { initialInvisibilityTime: initial_invis_time } unless initial_invis_time.nil?
+        request(:post, "queues/#{queue_name}/messages", message, query)
       end
 
-      def next_message(queue_name)
-        request(:get, "queues/#{queue_name}/messages/next")
+      def next_message(queue_name, initial_invis_time = nil)
+        query = { initialInvisibilityTime: initial_invis_time } unless initial_invis_time.nil?
+        request(:get, "queues/#{queue_name}/messages/next", nil, query)
       end
 
       def edit_message(queue_name, pop_receipt, options)

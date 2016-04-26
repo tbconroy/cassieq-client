@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe Cassieq::Client::Queues do
   let(:client) { Cassieq::Client.new(host: CONFIG["host"], account: CONFIG["account"], key: CONFIG["key"] )}
-  let(:create_queue) { client.create_queue(queue_name: "test_queue") }
+  let(:create_queue) { client.create_queue({ queue_name: "test_queue" }, true) }
   let(:delete_queue) { client.delete_queue("test_queue") }
 
   describe "#create_queue", vcr: { cassette_name: "queues/create_queue" } do

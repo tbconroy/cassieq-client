@@ -4,7 +4,7 @@ RSpec.describe Cassieq::Client do
   let(:base_params) { { host: CONFIG["host"], account: CONFIG["account"] } }
   let(:client) { Cassieq::Client.new(params) }
 
-  context "with key based authorization", vcr: { cassette_name: "client/key_auth" } do
+  context "with key based authorization" do
     let(:key_auth) { { key: CONFIG["key"] } }
     let(:params) { base_params.merge(key_auth) }
 
@@ -14,7 +14,7 @@ RSpec.describe Cassieq::Client do
     end
   end
 
-  context "with query param based authorization", vcr: { cassette_name: "client/signed_query_string_auth" } do
+  context "with query param based authorization" do
     let(:signed_query_string_auth) { { provided_params: CONFIG["provided_params"] } }
     let(:params) { base_params.merge(signed_query_string_auth) }
 
@@ -24,7 +24,7 @@ RSpec.describe Cassieq::Client do
     end
   end
   
-  context "with no authorization", vcr: { cassette_name: "client/no_auth" } do
+  context "with no authorization" do
     let(:params) { base_params }
 
     it "raises unauthorized error" do

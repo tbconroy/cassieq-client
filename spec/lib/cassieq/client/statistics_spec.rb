@@ -6,7 +6,7 @@ RSpec.describe Cassieq::Client::Queues do
   let(:publish_message) { client.publish_message("test_queue", "Here is message") }
   let(:delete_queue) { client.delete_queue("test_queue") }
 
-  describe "#statistics", vcr: { cassette_name: "statistics/statistics" } do
+  describe "#statistics" do
     let(:statistics) { client.statistics("test_queue") }
 
     it "returns statistical information" do

@@ -1,4 +1,9 @@
+sudo: required
+
 language: ruby
+
+services:
+  - docker
 
 rvm:
   - 1.9.3
@@ -7,3 +12,6 @@ rvm:
   - 2.2
 
 bundler_args: --without development
+
+script:
+  - bundle exec rake cassieq:test_client

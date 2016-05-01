@@ -1,9 +1,5 @@
-#You must provide the following variables for your dev CassieQ container when recording new cassettes for tests
-#host: the host for the dev CassieQ container
-#key: must be an cassieq auth key generated for account
-#provided_params: must be cassieq signed query string auth generated for account with level ["g"] permission
-
-host: 192.168.99.100
-account: test-account
-key: UrZCQ76KourlQIYcw8W_k0vJN5Rqv-29Fd7b6BvXn-AsOi-pCPRJTmOdR5NigW7U0PsdWr_YAw1EF_yMBNdhZw
-provided_params: auth=g&sig=2kcHP6hkdsonJ2f_-Q8DOfu0a_fLZajLm67RrpMZeko
+---
+host: <host>
+key: <key>
+provided_params: <provided_params>
+account: <account>

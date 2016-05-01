@@ -5,14 +5,14 @@ RSpec.describe Cassieq::Client::Queues do
   let(:create_queue) { client.create_queue({ queue_name: "test_queue" }, true) }
   let(:delete_queue) { client.delete_queue("test_queue") }
 
-  describe "#create_queue", vcr: { cassette_name: "queues/create_queue" } do
+  describe "#create_queue" do
     it "returns true" do
       expect(create_queue).to eq(true)
       delete_queue
     end
   end
 
-  describe "#queues", vcr: { cassette_name: "queues/queues" } do
+  describe "#queues" do
     let(:queues) { client.queues }
 
     it "returns information about all queues" do
@@ -24,7 +24,7 @@ RSpec.describe Cassieq::Client::Queues do
     end
   end
 
-  describe "#queue", vcr: { cassette_name: "queues/queue" } do
+  describe "#queue" do
     let(:queue) { client.queue("test_queue") }
 
     it "returns information about the queue" do
@@ -35,7 +35,7 @@ RSpec.describe Cassieq::Client::Queues do
     end 
   end
 
-  describe "#delete_queue", vcr: { cassette_name: "queues/delete_queue" } do
+  describe "#delete_queue" do
     it "returns true" do
       create_queue
       expect(delete_queue).to eq(true)

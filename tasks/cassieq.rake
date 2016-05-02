@@ -20,7 +20,13 @@ def start_cassieq
   print "Starting CassieQ "
   pid = fork { `docker run -it -p 8080:8080 -p 8081:8081 paradoxical/cassieq dev` }
 
+  count = 0
   until cassieq_ready?(host) do
+    count += 1
+    if count > 60 # 5 minutes
+      raise "Something went wrong with CassieQ startup"
+    end
+
     print "."
     sleep 5
   end
@@ -34,10 +40,13 @@ def start_cassieq
 end
 
 def host
-  @host ||= if /darwin/ =~ RUBY_PLATFORM
-    `docker-machine ip default`.chomp
-  elsif /linux/ =~ RUBY_PLATFORM
-    "0.0.0.0"
+  @host ||= case RUBY_PLATFORM
+  when /darwin/
+    `docker-machine ip default`.chomp 
+  when /linux/
+    "0.0.0.0" # assumes docker is installed natively on linux, e.g. builds on TravisCI
+  else
+    raise "Task is not supported on #{RUBY_PLATFORM}"
   end
 end 
 

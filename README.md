@@ -1,10 +1,10 @@
-#CassieQ Client
+# CassieQ Client
 [![Gem Version](https://badge.fury.io/rb/cassieq-client.svg)](https://badge.fury.io/rb/cassieq-client)
 [![Build Status](https://travis-ci.org/tronroy/cassieq-client.svg?branch=master)](https://travis-ci.org/tronroy/cassieq-client)
 
 A Ruby wrapper for the [CassieQ](https://github.com/paradoxical-io/cassieq) API
 
-##Installation
+## Installation
 Install from RubyGems:
 ```
 gem install cassieq-client
@@ -15,9 +15,9 @@ Require statement:
 require "cassieq/client"
 ```
 
-##Usage
+## Usage
 
-###Create a client
+### Create a client
 With signed request authentication:
 ```
 client = Cassieq::Client.new do |config| 
@@ -36,26 +36,26 @@ end
 ```
 Read more about CassieQ's authentication [here](https://github.com/paradoxical-io/cassieq/wiki/Authentication).
 
-###Create a queue
+### Create a queue
 ```
 client.create_queue(queue_name: "my_queue", bucket_size: 15, max_delivery_count: 10)
 # => true
 ```
 See CassieQ's API [documentation](https://github.com/paradoxical-io/cassieq/wiki/api) for all queue creation options.
 
-###Add message to queue
+### Add message to queue
 ```
 client.publish_message("my_queue", "message content")
 # => true
 ```
 
-###Get message from a queue
+### Get message from a queue
 ```
 client.next_message("my_queue")
 # => {:pop_receipt=>"MToyOkEyMnBLZw", :message=>"message content", :delivery_count=>0, :message_tag=>"A22pKg"}
 ```
 
-###Ack message
+### Ack message
 ```
 pop_receipt = "MToyOkEyMnBLZw"
 client.ack_message("my_queue", pop_receipt)
